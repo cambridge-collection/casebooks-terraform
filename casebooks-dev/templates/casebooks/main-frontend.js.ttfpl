@@ -205,8 +205,8 @@ async function handler(event) {
                 request.uri = '/search.html'
         }
     }
-        else if (/^(index\/*|\/*)$/.test(uri)) {
-            request.uri = '/index.html'
+        else if (/^((index|homepage)\/*|\/*)$/.test(uri)) {
+            request.uri = '/homepage.html'
         }
     else if (uri.endsWith('/')) {
             request.uri += 'index.html';
