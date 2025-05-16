@@ -43,7 +43,7 @@ transform-lambda-information = [
       API_PORT = "8081"
       API_PATH = "item"
     }
-    }
+  }
 ]
 dst-efs-prefix    = "/mnt/cudl-data-releases"
 dst-prefix        = "html/"
