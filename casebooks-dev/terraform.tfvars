@@ -53,7 +53,7 @@ lambda-alias-name = "LIVE"
 
 releases-root-directory-path        = "/data"
 efs-name                            = "cudl-data-releases-efs"
-cloudfront_route53_zone_id          = "Z035173135AOVWW8L57UJ"
+cloudfront_route53_zone_id          = "Z04340321BTLE5BZ141RF"
 cloudfront_distribution_name        = "casebooks-dev"
 cloudfront_origin_path              = "/www"
 cloudfront_error_response_page_path = "/404.html"
@@ -71,7 +71,7 @@ echo 1 > /proc/sys/vm/swappiness
 echo ECS_RESERVED_MEMORY=256 >> /etc/ecs/ecs.config
 EOF
 #route53_delegation_set_id      = "N02288771HQRX5TRME6CM"
-route53_zone_id_existing       = "Z035173135AOVWW8L57UJ"
+route53_zone_id_existing       = "Z04340321BTLE5BZ141RF"
 route53_zone_force_destroy     = true
 alb_enable_deletion_protection = false
 alb_idle_timeout               = "900"
