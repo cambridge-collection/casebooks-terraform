@@ -25,7 +25,7 @@ transform-lambda-bucket-sqs-notifications = [
 transform-lambda-information = [
   {
     "name"                     = "AWSLambda_TEI_SOLR_Listener"
-    "image_uri"                = "563181399728.dkr.ecr.eu-west-1.amazonaws.com/casebooks/solr-listener@sha256:39b16c47e150abf635a8a46067da06d2a71b38c2f97cc3f8d5381d9604ce106c"
+    "image_uri"                = "563181399728.dkr.ecr.eu-west-1.amazonaws.com/casebooks/solr-listener@sha256:715f737828168bb1a71decb2cf3f8f9e9565ae9d871557426c812b52fec71a3e"
     "queue_name"               = "CasebooksIndexTEIQueue"
     "queue_delay_seconds"      = 10
     "vpc_name"                 = "casebooks-dev-casebooks-ecs-vpc"
@@ -85,8 +85,8 @@ solr_domain_name       = "casebooks-dev-search"
 solr_application_port  = 8983
 solr_target_group_port = 8081
 solr_ecr_repositories = {
-  "casebooks/solr-api" = "sha256:a6cfd4d585135d476e4a8d1d71f93990ba8d1f2e8e915a40977e16dafa3ea09c",
-  "casebooks/solr"     = "sha256:0e605b192e9cb4250207aab65939d9d677a8ff2e322cec7b6daf8cab060e2257"
+  "casebooks/solr-api" = "sha256:9f1a3ed325aab3f78c85937e33b602228e340592f937e8ba6a2029856d9028d7",
+  "casebooks/solr"     = "sha256:161e5d8e144d754f5dfd8b567f31f52f95dbd1f50c327a0a085a52983fa8800b"
 }
 solr_ecs_task_def_volumes     = { "solr-volume" = "/var/solr" }
 solr_container_name_api       = "solr-api"
