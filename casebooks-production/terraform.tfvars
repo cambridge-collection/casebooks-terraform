@@ -3,7 +3,7 @@ project                      = "casebooks"
 component                    = "cudl-data-workflows"
 subcomponent                 = "cudl-transform-lambda"
 destination-bucket-name      = "releases"
-web_frontend_domain_name     = "casebooks-production.lib.cam.ac.uk"
+web_frontend_domain_name     = "casebooks-production.casebooks.lib.cam.ac.uk"
 transcriptions-bucket-name   = "unused-cul-cudl-transcriptions"
 enhancements-bucket-name     = "unused-cul-cudl-data-enhancements"
 source-bucket-name           = "unused-cul-cudl-data-source"
@@ -61,7 +61,7 @@ cloudfront_default_root_object      = "index.html"
 
 # Base Architecture
 cluster_name_suffix            = "casebooks-ecs"
-registered_domain_name         = "lib.cam.ac.uk."
+registered_domain_name         = "casebooks.lib.cam.ac.uk."
 asg_desired_capacity           = 1 # n = number of tasks
 asg_max_size                   = 1 # n + 1
 asg_allow_all_egress           = true
@@ -72,8 +72,8 @@ echo ECS_RESERVED_MEMORY=256 >> /etc/ecs/ecs.config
 EOF
 route53_zone_id_existing       = "Z01280312IT0HTCFLTI75"
 route53_zone_force_destroy     = false
-acm_certificate_arn            = "arn:aws:acm:eu-west-1:119233718832:certificate/d665eb21-94e1-422b-9d12-81e35e1f9245"
-acm_certificate_arn_us-east-1  = "arn:aws:acm:us-east-1:119233718832:certificate/4e2e7e1b-ae92-4bdd-a236-460ca1f2fb41"
+acm_certificate_arn            = "arn:aws:acm:eu-west-1:119233718832:certificate/c0ad4a7f-200f-4d79-bd83-63e101433e32"
+acm_certificate_arn_us-east-1  = "arn:aws:acm:us-east-1:119233718832:certificate/328280bb-34f5-465f-b701-218acf4a24b5"
 alb_enable_deletion_protection = false
 alb_idle_timeout               = "900"
 vpc_cidr_block                 = "10.87.0.0/22" #1024 adresses
@@ -86,7 +86,7 @@ solr_domain_name       = "casebooks-search"
 solr_application_port  = 8983
 solr_target_group_port = 8081
 solr_ecr_repositories = {
-  "casebooks/solr-api" = "sha256:39cf00c7a7e5f1eaad7d37df9040c57f02955852b977a15b9823a1e19284d9ad",
+  "casebooks/solr-api" = "sha256:827ffb2a0b43204fb357ccd8b485aa69e719b441328698ca7dc6e414c8e24ce6",
   "casebooks/solr"     = "sha256:79e9ec370e4d5ee3c1c890e0a20d40185ac1ffd96a8b0a67cd52551f8d42deb5"
 }
 solr_ecs_task_def_volumes     = { "solr-volume" = "/var/solr" }

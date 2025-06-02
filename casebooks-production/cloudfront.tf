@@ -23,7 +23,7 @@ resource "aws_cloudfront_key_value_store" "viewer" {
 resource "aws_cloudfrontkeyvaluestore_key" "domain" {
   key_value_store_arn = aws_cloudfront_key_value_store.viewer.arn
   key                 = "domain"
-  value               = "lib.cam.ac.uk"
+  value               = "casebooks.lib.cam.ac.uk"
   # The value should be generated from registered_domain_name (with a replace to remove trailing period)
 }
 
