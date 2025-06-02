@@ -3,7 +3,7 @@ project                      = "casebooks"
 component                    = "cudl-data-workflows"
 subcomponent                 = "cudl-transform-lambda"
 destination-bucket-name      = "releases"
-web_frontend_domain_name     = "casebooks-production.casebooks.lib.cam.ac.uk"
+web_frontend_domain_name     = "casebooks-production.lib.cam.ac.uk"
 transcriptions-bucket-name   = "unused-cul-cudl-transcriptions"
 enhancements-bucket-name     = "unused-cul-cudl-data-enhancements"
 source-bucket-name           = "unused-cul-cudl-data-source"
@@ -61,7 +61,7 @@ cloudfront_default_root_object      = "index.html"
 
 # Base Architecture
 cluster_name_suffix            = "casebooks-ecs"
-registered_domain_name         = "casebooks.lib.cam.ac.uk."
+registered_domain_name         = "lib.cam.ac.uk."
 asg_desired_capacity           = 1 # n = number of tasks
 asg_max_size                   = 1 # n + 1
 asg_allow_all_egress           = true
