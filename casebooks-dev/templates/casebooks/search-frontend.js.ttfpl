@@ -11,7 +11,7 @@ const keySecret = "secret"
 const keyJwtDuration = "jwtDuration"
 let domain = "Not Found"
 let secret = "Not Found"
-let privateSite = "Not Found"
+let privateSite = true
 let jwtDuration = 60*60*1000
 
 const now = new Date()
@@ -101,16 +101,24 @@ async function handler(event) {
     const cookieKey = domainTld+"Key"
     if (['GET','HEAD','OPTIONS'].includes(request.method)) {
         try {
-            secret = await kvsHandle.get(keySecret)
-            domain = await kvsHandle.get(keyDomain)
-            privateSite = await kvsHandle.get(KeyPrivateSite)
-            jwtDuration = await kvsHandle.get(keyJwtDuration)
+            privateSite = await kvsHandle.get(keyPrivateSite)
         } catch (err) {
-            console.log(`Kvs key lookup failed: ${err}`);
+            console.log(`privateSite key lookup failed: ${err}`);
+        }
+        privateSite = (privateSite === 'true') ? true: false
+        if (privateSite !== false) {
+            try {
+                secret = await kvsHandle.get(keySecret)
+                domain = await kvsHandle.get(keyDomain)
+
+                jwtDuration = await kvsHandle.get(keyJwtDuration)
+            } catch (err) {
+                console.log(`Kvs key lookup failed: ${err}`);
+            }
         }
 
-        privateSite = (privateSite === 'true') ? true: false
         jwtDuration = (!isNaN(jwtDuration)) ? parseInt(jwtDuration) : 60*60*1000
+
         let isAuthorised = false;
         const jwt_token = (cookieKey in request.cookies) ? request.cookies[cookieKey].value : ''
         if (privateSite && jwt_token != '') {
