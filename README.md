@@ -1,6 +1,6 @@
-# Darwin Configuration
+# Casebooks Configuration
 
-This is the Terraform configuration for the Darwin Platforms.
+This is the Terraform configuration for the Casebooks Platforms.
 Initially this will only cover the setting up the data loading process.
 
 ## Prerequisites 
@@ -9,10 +9,10 @@ Install Terraform: https://learn.hashicorp.com/tutorials/terraform/install-cli
 
 ## Commands
 
-First select the environment you want to work in: dev, stage or prod.  It's recommended you 
+First select the environment you want to work in: dev or production.  It's recommended you 
 work and test and changes in dev first!
 
-    cd mscat-dev
+    cd casebooks-dev
 
 To initialise the working directory run the following in the root directory of this project.
 
@@ -55,24 +55,6 @@ It is backend "s3" section of the main.tf file.
 
 Resource naming in the sandbox environment has been changed to include the user's CRSid. When running Terraform commands, you will be prompted to enter a value for the `owner` for which the CRSid should be provided. This will be added as a prefix in resource names. Other environments, dev, staging and production are not prefixed with the owner value. In the sandbox environment, a tag Owner will also be added to resources. This will not be used in dev, staging and production.
 
-## Running Terraform Tests
-
-Before applying the Terraform in each environment, it is advisable to run tests to validate that the modules being used generate expected outputs.
-
-Terraform tests can be run in mscat-dev, mscat-staging and mscat-production. This can be done by entering the directory of choice, e.g.
-
-    cd mscat-dev
-
-Then entering a command 
-
-    terraform test dev
-
-Which will run a suite of tests against that environment. The test file in this case is located in the path `mscat-dev/tests/dev.tftest.hcl`.
-
-Currently the tests are intended to be run using an IAM role from the sandbox environment. Variables from each environment are used, with overrides from the test file enabling the tests to be run in the sandbox environment.
-
-Currently all tests run Terraform plan, although they could be adapted to run apply if desired.
-
 ## Data Loading Process Infrastructure.
 
 The data loading process converts the data from the input format into the output format.
@@ -109,4 +91,4 @@ This diagram shows the AWS infrastructure setup required for the data loading pr
 
 ### TODO
 
-The code in this repo was based on <https://github.com/cambridge-collection/cudl-terraform>. It contains (and creates) a number of things that aren't needed for the Manuscripts Catalogue platform. These items will be removed in the next phase of development.
+The code in this repo was based on <https://github.com/cambridge-collection/cudl-terraform>. It contains (and creates) a number of things that aren't needed for Casebooks. These items will be removed in the next phase of development.
