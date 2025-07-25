@@ -25,7 +25,7 @@ transform-lambda-bucket-sqs-notifications = [
 transform-lambda-information = [
   {
     "name"                     = "AWSLambda_TEI_SOLR_Listener"
-    "image_uri"                = "119233718832.dkr.ecr.eu-west-1.amazonaws.com/casebooks/listener@sha256:715f737828168bb1a71decb2cf3f8f9e9565ae9d871557426c812b52fec71a3e"
+    "image_uri"                = "119233718832.dkr.ecr.eu-west-1.amazonaws.com/casebooks/listener@sha256:af9641da791dbc525e5e48452277d6e87efb77026f37a272ec36fc259b0f87c6"
     "queue_name"               = "CasebooksIndexTEIQueue"
     "queue_delay_seconds"      = 10
     "vpc_name"                 = "casebooks-production-casebooks-ecs-vpc"
