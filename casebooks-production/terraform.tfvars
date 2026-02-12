@@ -86,7 +86,7 @@ solr_domain_name       = "casebooks-search"
 solr_application_port  = 8983
 solr_target_group_port = 8081
 solr_ecr_repositories = {
-  "casebooks/solr-api" = "sha256:6f6d3ac1e6e83c045bd0ed24ad7aa6b7e416b2670c153ba522decc6633c550d1",
+  "casebooks/solr-api" = "sha256:fca34142528af36dabc120a2637a95270e9fb0b129fab3de4f8f756328e740b5",
   "casebooks/solr"     = "sha256:79e9ec370e4d5ee3c1c890e0a20d40185ac1ffd96a8b0a67cd52551f8d42deb5"
 }
 solr_ecs_task_def_volumes     = { "solr-volume" = "/var/solr" }
