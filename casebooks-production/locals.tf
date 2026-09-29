@@ -20,4 +20,19 @@ locals {
     AWS_OUTPUT_BUCKET           = "${local.environment}-cudl-data-source"
   }
   solr_ecs_task_def_memory = data.aws_ec2_instance_type.asg.memory_size - 1024
+
+  # Matches the incoming viewer URI, before the clean_urls function rewrites it.
+  # /search is a live query endpoint that must stay dynamic. /search* would also catch /searching/what-am-i-searching.
+  cloudfront_ordered_cache_behaviors = [
+    {
+      path_pattern                 = "/search"
+      cache_policy_name            = "Managed-CachingDisabled"
+      response_headers_policy_name = aws_cloudfront_response_headers_policy.no_store.name
+    },
+    {
+      path_pattern                 = "/search/*"
+      cache_policy_name            = "Managed-CachingDisabled"
+      response_headers_policy_name = aws_cloudfront_response_headers_policy.no_store.name
+    },
+  ]
 }

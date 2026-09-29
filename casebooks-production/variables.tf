@@ -171,6 +171,12 @@ variable "cloudfront_default_root_object" {
   description = "Object that you want CloudFront to return (for example, index.html) when an end user requests the root URL"
 }
 
+variable "cloudfront_default_cache_policy" {
+  description = "Managed cache-policy name for the default CloudFront behavior."
+  type        = string
+  default     = "Managed-CachingDisabled"
+}
+
 variable "cluster_name_suffix" {
   type        = string
   description = "Name suffix of the ECS Cluster"

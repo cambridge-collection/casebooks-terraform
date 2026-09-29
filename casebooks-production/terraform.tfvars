@@ -60,6 +60,8 @@ cloudfront_error_response_page_path = "/404.html"
 cloudfront_default_root_object      = "index.html"
 cloudfront_access_logging           = true
 cloudfront_access_logging_bucket    = "cul-dhs-cloudfront-access-logs.s3.amazonaws.com"
+cloudfront_default_cache_policy     = "Managed-CachingOptimized"
+# cloudfront_ordered_cache_behaviors is in locals.tf; it references a response headers policy resource
 
 # Base Architecture
 cluster_name_suffix            = "casebooks-ecs"
