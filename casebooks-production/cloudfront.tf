@@ -20,6 +20,20 @@ resource "aws_cloudfront_key_value_store" "viewer" {
   name = "${local.environment}-cudl-viewer"
 }
 
+# No AWS managed response headers policy sets Cache-Control, so /search needs a custom one.
+resource "aws_cloudfront_response_headers_policy" "no_store" {
+  name    = "${local.environment}-no-store"
+  comment = "Prevents browser and proxy caching"
+
+  custom_headers_config {
+    items {
+      header   = "Cache-Control"
+      value    = "no-store"
+      override = true
+    }
+  }
+}
+
 resource "aws_cloudfrontkeyvaluestore_key" "domain" {
   key_value_store_arn = aws_cloudfront_key_value_store.viewer.arn
   key                 = "domain"
