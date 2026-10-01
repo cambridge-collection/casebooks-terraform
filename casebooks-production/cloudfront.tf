@@ -34,6 +34,43 @@ resource "aws_cloudfront_response_headers_policy" "no_store" {
   }
 }
 
+# Managed-CachingOptimized with a one-year default TTL, which applies because the S3 objects carry no Cache-Control.
+resource "aws_cloudfront_cache_policy" "one_year" {
+  name        = "${local.environment}-caching-one-year"
+  comment     = "Caches at the edge for one year"
+  min_ttl     = 1
+  default_ttl = 31536000
+  max_ttl     = 31536000
+
+  parameters_in_cache_key_and_forwarded_to_origin {
+    enable_accept_encoding_brotli = true
+    enable_accept_encoding_gzip   = true
+
+    cookies_config {
+      cookie_behavior = "none"
+    }
+    headers_config {
+      header_behavior = "none"
+    }
+    query_strings_config {
+      query_string_behavior = "none"
+    }
+  }
+}
+
+resource "aws_cloudfront_response_headers_policy" "max_age_one_day" {
+  name    = "${local.environment}-max-age-one-day"
+  comment = "Limits browser caching to 24 hours"
+
+  custom_headers_config {
+    items {
+      header   = "Cache-Control"
+      value    = "max-age=86400"
+      override = true
+    }
+  }
+}
+
 resource "aws_cloudfrontkeyvaluestore_key" "domain" {
   key_value_store_arn = aws_cloudfront_key_value_store.viewer.arn
   key                 = "domain"

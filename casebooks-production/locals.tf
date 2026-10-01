@@ -34,5 +34,11 @@ locals {
       cache_policy_name            = "Managed-CachingDisabled"
       response_headers_policy_name = aws_cloudfront_response_headers_policy.no_store.name
     },
+    # Catch-all, because the module's default behavior can't take a response headers policy. Must stay last.
+    {
+      path_pattern                 = "/*"
+      cache_policy_name            = aws_cloudfront_cache_policy.one_year.name
+      response_headers_policy_name = aws_cloudfront_response_headers_policy.max_age_one_day.name
+    },
   ]
 }
