@@ -322,3 +322,18 @@ variable "web_frontend_domain_name" {
   type        = string
   description = "Domain name for cloudfront web frontend"
 }
+
+variable "waf_ip_allow_list_addresses" {
+  type        = list(string)
+  description = "IPv4 CIDR ranges exempt from rate limiting on the web and SOLR WAFs"
+}
+
+variable "solr_allowed_origins" {
+  type        = list(string)
+  description = "Origin header values (scheme and host, no trailing slash) allowed to call the SOLR /items endpoint"
+
+  validation {
+    condition     = length(var.solr_allowed_origins) > 0
+    error_message = "solr_allowed_origins must contain at least one origin."
+  }
+}

@@ -84,6 +84,7 @@ alb_idle_timeout               = "900"
 vpc_cidr_block                 = "10.87.0.0/22" #1024 adresses
 vpc_public_subnet_public_ip    = false
 cloudwatch_log_group           = "/ecs/casebooks-production"
+waf_ip_allow_list_addresses    = ["131.111.0.0/16"] # Mirrors the LibraryVPN IP set in the CUDL account
 
 # SOLR Worload
 solr_name_suffix       = "solr"
@@ -101,3 +102,7 @@ solr_health_check_status_code = "404"
 solr_allowed_methods          = ["HEAD", "GET", "OPTIONS"]
 solr_ecs_task_def_cpu         = 2048
 solr_use_service_discovery    = true
+solr_allowed_origins = [
+  "https://casebooks.lib.cam.ac.uk",
+  "https://casebooks-production.casebooks.lib.cam.ac.uk",
+]
