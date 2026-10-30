@@ -35,13 +35,14 @@ transform-lambda-information = [
     "memory"                   = 1024
     "batch_window"             = 2
     "batch_size"               = 1
-    "maximum_concurrency"      = 100
+    "maximum_concurrency"      = 10
     "use_datadog_variables"    = false
     "use_additional_variables" = true
     "environment_variables" = {
-      API_HOST = "solr-api-casebooks-ecs.casebooks-production-solr"
-      API_PORT = "8081"
-      API_PATH = "item"
+      API_HOST  = "solr-api-casebooks-ecs.casebooks-production-solr"
+      API_PORT  = "8081"
+      API_PATH  = "item"
+      LOG_LEVEL = "INFO"
     }
   }
 ]
