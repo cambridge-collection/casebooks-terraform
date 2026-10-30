@@ -64,8 +64,18 @@ module "cudl-data-processing" {
   cloudfront_default_cache_policy           = var.cloudfront_default_cache_policy
   cloudfront_ordered_cache_behaviors        = local.cloudfront_ordered_cache_behaviors
   cloudfront_alternative_domain_names       = [trimsuffix(var.registered_domain_name, ".")]
-  acm_create_certificate                    = false
-  acm_certificate_arn                       = var.acm_certificate_arn_us-east-1
+  waf_use_rate_limiting                     = true
+  waf_rate_limit                            = 60
+  waf_rate_limiting_evaluation_window       = 300
+  # Two entries because STARTS_WITH "/search" would also catch /searching/what-am-i-searching.
+  waf_rate_limiting_scope_down_uris = [
+    { uri = "/search", match_type = "EXACTLY" },
+    { uri = "/search/" },
+  ]
+  waf_ip_allow_list_addresses = var.waf_ip_allow_list_addresses
+  waf_ip_allow_list_name      = "UCAM"
+  acm_create_certificate      = false
+  acm_certificate_arn         = var.acm_certificate_arn_us-east-1
   providers = {
     aws.us-east-1 = aws.us-east-1
   }
