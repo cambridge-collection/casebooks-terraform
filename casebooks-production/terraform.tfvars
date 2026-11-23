@@ -93,7 +93,7 @@ solr_application_port  = 8983
 solr_target_group_port = 8081
 solr_ecr_repositories = {
   "casebooks/solr-api" = "sha256:c44c8697628864423ab93ba03bf8df37ddb1d72bc6686f040b548abda372306f",
-  "casebooks/solr"     = "sha256:e9cefb1ed7409128bc1cc417d5ad4e74351b0b22d2ed438185bdd0b26975f0ae"
+  "casebooks/solr"     = "sha256:da7090bd59e0eb0603c29a3eb24e8a37130c0e884c63adc1be082687ed603f27"
 }
 solr_ecs_task_def_volumes     = { "solr-volume" = "/var/solr" }
 solr_container_name_api       = "solr-api"
